@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdmircb5503ao"]
+
+[ext_resource type="Script" uid="uid://ckinhialrnbke" path="res://Scripts/food_object.gd" id="1_enrce"]
+[ext_resource type="Texture2D" uid="uid://0vaolcttoa4h" path="res://Assets/TYFood.png" id="2_swppg"]
+[ext_resource type="Texture2D" uid="uid://m4hti2dwop3d" path="res://Assets/TYEffects.png" id="3_swppg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enrce"]
+atlas = ExtResource("2_swppg")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swppg"]
+atlas = ExtResource("2_swppg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bql73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enrce")
+}],
+"loop": true,
+"name": &"processed_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swppg")
+}],
+"loop": true,
+"name": &"unprocessed_normal",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2ybv"]
+radius = 29.87
+height = 59.74
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3sv0"]
+atlas = ExtResource("3_swppg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t56n4"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 39.05
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.19999999
+scale_max = 0.19999999
+
+[node name="Meat" type="CharacterBody2D" groups=["Food"]]
+z_index = 2
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_enrce")
+food_type = "meat"
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+scale = Vector2(4.015625, 4.40625)
+sprite_frames = SubResource("SpriteFrames_bql73")
+animation = &"unprocessed_normal"
+autoplay = "unprocessed_normal"
+
+[node name="MouseDetectorArea" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+scale = Vector2(1.5, 1.5)
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="MouseDetectorArea"]
+z_index = 2
+scale = Vector2(0.67, 0.67)
+shape = SubResource("CapsuleShape2D_g2ybv")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+shape = SubResource("CapsuleShape2D_g2ybv")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="AnimationTimer1" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AnimationTimer2" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -37.5)
+emitting = false
+amount = 1
+texture = SubResource("AtlasTexture_h3sv0")
+speed_scale = 0.3
+process_material = SubResource("ParticleProcessMaterial_t56n4")
+
+[connection signal="mouse_entered" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timers/AnimationTimer1" to="." method="_on_animation_timer_1_timeout"]
+[connection signal="timeout" from="Timers/AnimationTimer2" to="." method="_on_animation_timer_2_timeout"]

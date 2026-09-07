@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfcn4hxgsgwqj"]
+
+[ext_resource type="Texture2D" uid="uid://cg1yeg6q73sfp" path="res://Assets/TYCustomerSprites.png" id="1_3vusp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo0u0"]
+atlas = ExtResource("1_3vusp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqdp0"]
+atlas = ExtResource("1_3vusp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8acr0"]
+atlas = ExtResource("1_3vusp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac5ay"]
+atlas = ExtResource("1_3vusp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ov476"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo0u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqdp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8acr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac5ay")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Win" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D"]
+offset_left = -530.0
+offset_top = -235.0
+offset_right = 315.0
+offset_bottom = 378.0
+theme_override_font_sizes/normal_font_size = 64
+text = "You got promoted
+- The Manager™"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D"]
+z_index = -1
+position = Vector2(250.00002, 17.000008)
+scale = Vector2(21.47975, 18.995928)
+sprite_frames = SubResource("SpriteFrames_ov476")
+autoplay = "default"
+frame_progress = 0.670001

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct3pj3cafyyfk"]
+
+[ext_resource type="Script" uid="uid://ckinhialrnbke" path="res://Scripts/food_object.gd" id="1_v5evk"]
+[ext_resource type="Texture2D" uid="uid://fnrnol8uce71" path="res://icon.svg" id="2_yskb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw61j"]
+size = Vector2(128.10318, 128)
+
+[node name="AbstractFoodObject" type="CharacterBody2D"]
+z_index = 2
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_v5evk")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_yskb3")
+
+[node name="MouseDetectorArea" type="Area2D" parent="."]
+z_index = 2
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="MouseDetectorArea"]
+z_index = 2
+position = Vector2(-0.9484099, -0.9999998)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_bw61j")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_bw61j")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="AnimationTimer1" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AnimationTimer2" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="mouse_entered" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timers/AnimationTimer1" to="." method="_on_animation_timer_1_timeout"]
+[connection signal="timeout" from="Timers/AnimationTimer2" to="." method="_on_animation_timer_2_timeout"]

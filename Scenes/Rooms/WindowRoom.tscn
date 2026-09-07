@@ -1,0 +1,325 @@
+[gd_scene load_steps=28 format=3 uid="uid://baqhphp3n7e48"]
+
+[ext_resource type="Texture2D" uid="uid://b7t2exynq81hu" path="res://Assets/TYBackgrounds.png" id="1_wd3tn"]
+[ext_resource type="Script" uid="uid://0c2532e78cml" path="res://Scripts/cabinet.gd" id="2_6t0tj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj6oh"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 192, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8xb6"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 96, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3r1k"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 0, 72, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gexqf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj6oh")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8xb6")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3r1k")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_243jc"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 240, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b7df"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 144, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjv8k"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 48, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo6lf"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 48, 72, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7fdpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_243jc")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b7df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjv8k")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo6lf")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m20ww"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 288, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lsns"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 320, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h45qn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m20ww")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lsns")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lsns")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qguk"]
+size = Vector2(15.25, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjtfr"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(0, 288, 72, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eb6m"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(16, 304, 33, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd3tn"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(16, 320, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3r1k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjtfr")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eb6m")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd3tn")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqab1"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(48, 288, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gexqf"]
+atlas = ExtResource("1_wd3tn")
+region = Rect2(49, 320, 23, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8wlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqab1")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gexqf")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gexqf")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo6lf"]
+size = Vector2(72, 1.06)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usdvq"]
+size = Vector2(15, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t0tj"]
+size = Vector2(16, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tl6fb"]
+size = Vector2(1, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlwcc"]
+size = Vector2(28.5, 56)
+
+[node name="WindowRoom" type="Node2D" groups=["Room"]]
+
+[node name="Window" type="AnimatedSprite2D" parent="." groups=["Distortable"]]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_gexqf")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="Background" type="AnimatedSprite2D" parent="Window" groups=["Distortable"]]
+z_index = -1
+position = Vector2(-10, -15)
+sprite_frames = SubResource("SpriteFrames_7fdpe")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="Cabinets" type="Node2D" parent="Window"]
+z_index = 2
+
+[node name="LeftCabinet" type="AnimatedSprite2D" parent="Window/Cabinets" groups=["Distortable"]]
+z_index = 2
+position = Vector2(-28, 19)
+sprite_frames = SubResource("SpriteFrames_h45qn")
+animation = &"normal"
+autoplay = "normal"
+script = ExtResource("2_6t0tj")
+
+[node name="MouseDetectorArea" type="Area2D" parent="Window/Cabinets/LeftCabinet"]
+visible = false
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="Window/Cabinets/LeftCabinet/MouseDetectorArea"]
+position = Vector2(1, -4)
+scale = Vector2(1.2, 1)
+shape = SubResource("RectangleShape2D_0qguk")
+
+[node name="MiddleCabinet" type="AnimatedSprite2D" parent="Window/Cabinets" groups=["Distortable"]]
+z_index = 2
+position = Vector2(-4, 19)
+sprite_frames = SubResource("SpriteFrames_v3r1k")
+animation = &"normal"
+autoplay = "normal"
+script = ExtResource("2_6t0tj")
+
+[node name="MouseDetectorArea" type="Area2D" parent="Window/Cabinets/MiddleCabinet"]
+visible = false
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="Window/Cabinets/MiddleCabinet/MouseDetectorArea"]
+position = Vector2(0, -4)
+scale = Vector2(2.3, 1)
+shape = SubResource("RectangleShape2D_0qguk")
+
+[node name="RightCabinet" type="AnimatedSprite2D" parent="Window/Cabinets" groups=["Distortable"]]
+z_index = 2
+position = Vector2(24, 19)
+sprite_frames = SubResource("SpriteFrames_u8wlk")
+animation = &"normal"
+autoplay = "normal"
+script = ExtResource("2_6t0tj")
+
+[node name="MouseDetectorArea" type="Area2D" parent="Window/Cabinets/RightCabinet"]
+visible = false
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="Window/Cabinets/RightCabinet/MouseDetectorArea"]
+position = Vector2(-0.99999994, -4)
+scale = Vector2(1.7, 1)
+shape = SubResource("RectangleShape2D_0qguk")
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+visible = false
+z_index = 5
+
+[node name="Desk" type="CollisionShape2D" parent="Collisions"]
+z_index = 5
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_vo6lf")
+
+[node name="Floor" type="CollisionShape2D" parent="Collisions"]
+z_index = 5
+position = Vector2(0, 49.5)
+scale = Vector2(1, 50)
+shape = SubResource("RectangleShape2D_vo6lf")
+
+[node name="TopShelf" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(28.5, -9.75)
+shape = SubResource("RectangleShape2D_usdvq")
+
+[node name="BottomShelf" type="CollisionShape2D" parent="Collisions"]
+z_index = 5
+position = Vector2(28, 7.75)
+shape = SubResource("RectangleShape2D_6t0tj")
+
+[node name="ShelfSide" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(20.5, -9.5)
+shape = SubResource("RectangleShape2D_tl6fb")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-51.75, -2)
+shape = SubResource("RectangleShape2D_jlwcc")
+
+[node name="RightBorder" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(51, -2)
+shape = SubResource("RectangleShape2D_jlwcc")
+
+[connection signal="mouse_entered" from="Window/Cabinets/LeftCabinet/MouseDetectorArea" to="Window/Cabinets/LeftCabinet" method="_on_mouse_detector_area_mouse_entered"]
+[connection signal="mouse_exited" from="Window/Cabinets/LeftCabinet/MouseDetectorArea" to="Window/Cabinets/LeftCabinet" method="_on_mouse_detector_area_mouse_exited"]
+[connection signal="mouse_entered" from="Window/Cabinets/MiddleCabinet/MouseDetectorArea" to="Window/Cabinets/MiddleCabinet" method="_on_mouse_detector_area_mouse_entered"]
+[connection signal="mouse_exited" from="Window/Cabinets/MiddleCabinet/MouseDetectorArea" to="Window/Cabinets/MiddleCabinet" method="_on_mouse_detector_area_mouse_exited"]
+[connection signal="mouse_entered" from="Window/Cabinets/RightCabinet/MouseDetectorArea" to="Window/Cabinets/RightCabinet" method="_on_mouse_detector_area_mouse_entered"]
+[connection signal="mouse_exited" from="Window/Cabinets/RightCabinet/MouseDetectorArea" to="Window/Cabinets/RightCabinet" method="_on_mouse_detector_area_mouse_exited"]

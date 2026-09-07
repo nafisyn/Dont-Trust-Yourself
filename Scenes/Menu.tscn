@@ -1,0 +1,177 @@
+[gd_scene load_steps=20 format=3 uid="uid://17kjgerihm2w"]
+
+[ext_resource type="PackedScene" uid="uid://baqhphp3n7e48" path="res://Scenes/Rooms/WindowRoom.tscn" id="1_3kf3n"]
+[ext_resource type="Script" uid="uid://dwmtnkiyfricx" path="res://Scripts/menu.gd" id="1_syfuq"]
+[ext_resource type="Script" uid="uid://cjciwl256vgpi" path="res://Scripts/menu_camera.gd" id="2_ma218"]
+[ext_resource type="Texture2D" uid="uid://ddra0xgog5phb" path="res://Assets/TYGUI.png" id="2_s2c3o"]
+[ext_resource type="Script" uid="uid://cmjpgoc14o3sa" path="res://Scripts/jiggle.gd" id="5_ma218"]
+[ext_resource type="Shader" uid="uid://d1hdutxe1blxy" path="res://Scripts/vigenette.gdshader" id="6_idohh"]
+[ext_resource type="PackedScene" uid="uid://q5ndki5nu1te" path="res://Scenes/Food/FunBurger.tscn" id="7_wfhf6"]
+[ext_resource type="Texture2D" uid="uid://h4m0oxbmdf5j" path="res://Assets/TYItems.png" id="8_aobxe"]
+[ext_resource type="Texture2D" uid="uid://m4hti2dwop3d" path="res://Assets/TYEffects.png" id="9_ab40c"]
+[ext_resource type="Script" uid="uid://bhf4b86hb2i24" path="res://Scripts/vibration.gd" id="10_ab40c"]
+[ext_resource type="AudioStream" uid="uid://6tx7eaa36h0k" path="res://Assets/New Project - Studio - Google Chrome 2026-08-29 19-20-07.mp3" id="11_sjh0l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idohh"]
+atlas = ExtResource("2_s2c3o")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2c3o"]
+atlas = ExtResource("2_s2c3o")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma218"]
+atlas = ExtResource("2_s2c3o")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfhf6"]
+shader = ExtResource("6_idohh")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjh0l"]
+atlas = ExtResource("8_aobxe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aobxe"]
+atlas = ExtResource("9_ab40c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ab40c"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.2, 0.1, 1)
+emission_shape = 1
+emission_sphere_radius = 39.05
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.19999999
+scale_max = 0.19999999
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qki4b"]
+atlas = ExtResource("2_s2c3o")
+region = Rect2(0, 128, 150, 64)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_syfuq")
+
+[node name="Camera" type="Camera2D" parent="."]
+scale = Vector2(0.35487643, 0.055404425)
+zoom = Vector2(16, 14)
+position_smoothing_enabled = true
+script = ExtResource("2_ma218")
+
+[node name="SettingsButton" type="TextureButton" parent="."]
+visible = false
+z_index = 2
+offset_left = 23.0
+offset_top = -6.0
+offset_right = 55.0
+offset_bottom = 31.5
+scale = Vector2(0.3, 0.3)
+texture_normal = SubResource("AtlasTexture_idohh")
+script = ExtResource("5_ma218")
+
+[node name="AnimationTimer1" type="Timer" parent="SettingsButton"]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="AnimationTimer2" type="Timer" parent="SettingsButton"]
+wait_time = 0.2
+one_shot = true
+
+[node name="WindowRoom" parent="." instance=ExtResource("1_3kf3n")]
+
+[node name="PlayButton" type="TextureButton" parent="."]
+z_index = 3
+offset_left = -21.0
+offset_top = -1.0
+offset_right = 43.0
+offset_bottom = 31.0
+scale = Vector2(0.355, 0.355)
+texture_normal = SubResource("AtlasTexture_s2c3o")
+texture_pressed = SubResource("AtlasTexture_ma218")
+script = ExtResource("5_ma218")
+
+[node name="AnimationTimer1" type="Timer" parent="PlayButton"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AnimationTimer2" type="Timer" parent="PlayButton"]
+wait_time = 0.2
+one_shot = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="GUI/Control"]
+material = SubResource("ShaderMaterial_wfhf6")
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="FunBurger" parent="." instance=ExtResource("7_wfhf6")]
+visible = false
+position = Vector2(9, -7)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cup" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(20.999998, 3.9999998)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_sjh0l")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Cup"]
+position = Vector2(-2.499995, -2.5000038)
+amount = 1
+texture = SubResource("AtlasTexture_aobxe")
+speed_scale = 0.3
+process_material = SubResource("ParticleProcessMaterial_ab40c")
+
+[node name="Logo" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-7, -12)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_qki4b")
+script = ExtResource("10_ab40c")
+
+[node name="DistortTimer1" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[node name="DistortTimer2" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="DistortTimer3" type="Timer" parent="."]
+wait_time = 0.125
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_sjh0l")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="SettingsButton" to="Camera" method="_on_settings_button_pressed"]
+[connection signal="timeout" from="SettingsButton/AnimationTimer1" to="SettingsButton" method="_on_animation_timer_1_timeout"]
+[connection signal="timeout" from="SettingsButton/AnimationTimer2" to="SettingsButton" method="_on_animation_timer_2_timeout"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_texture_button_pressed"]
+[connection signal="timeout" from="PlayButton/AnimationTimer1" to="PlayButton" method="_on_animation_timer_1_timeout"]
+[connection signal="timeout" from="PlayButton/AnimationTimer2" to="PlayButton" method="_on_animation_timer_2_timeout"]
+[connection signal="timeout" from="DistortTimer1" to="." method="_on_distort_timer_1_timeout"]
+[connection signal="timeout" from="DistortTimer2" to="." method="_on_distort_timer_2_timeout"]
+[connection signal="timeout" from="DistortTimer3" to="." method="_on_distort_timer_3_timeout"]

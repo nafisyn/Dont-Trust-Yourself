@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bklc40wo3id2g"]
+
+[ext_resource type="Texture2D" uid="uid://cg1yeg6q73sfp" path="res://Assets/TYCustomerSprites.png" id="1_o7g7w"]
+[ext_resource type="Script" uid="uid://ca26pjrwdvma0" path="res://Scripts/customer.gd" id="1_r206j"]
+[ext_resource type="Texture2D" uid="uid://0vaolcttoa4h" path="res://Assets/TYFood.png" id="3_kkvav"]
+[ext_resource type="AudioStream" uid="uid://c7hdg4e2kb7k8" path="res://Assets/New Project - Studio - Google Chrome 2026-08-29 19-26-42.mp3" id="4_j21p7"]
+
+[node name="Customer" type="Node2D"]
+script = ExtResource("1_r206j")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_o7g7w")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_o7g7w")
+
+[node name="Hair" type="Sprite2D" parent="."]
+position = Vector2(0.5, -6.5)
+texture = ExtResource("1_o7g7w")
+
+[node name="OrderSprite" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(-28, -1.9999999)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_kkvav")
+
+[node name="Bubble" type="Polygon2D" parent="OrderSprite"]
+position = Vector2(25, -5)
+scale = Vector2(0.3, 0.3)
+color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+polygon = PackedVector2Array(-137, -63, -183, -12, -183, 47, -137, 76, -25, 77, 12, 42, 10, -16, -26, -63)
+uv = PackedVector2Array(-137, -58, -183, -7, -183, 52, -137, 81, -25, 82, 12, 47, 10, -11, -27, -65)
+
+[node name="TalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_j21p7")

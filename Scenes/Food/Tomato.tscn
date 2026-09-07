@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://khnoif7i1q41"]
+
+[ext_resource type="Script" uid="uid://ckinhialrnbke" path="res://Scripts/food_object.gd" id="1_elajj"]
+[ext_resource type="Texture2D" uid="uid://0vaolcttoa4h" path="res://Assets/TYFood.png" id="2_1fpdc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fpdc"]
+atlas = ExtResource("2_1fpdc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elajj"]
+atlas = ExtResource("2_1fpdc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bql73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fpdc")
+}],
+"loop": true,
+"name": &"processed_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elajj")
+}],
+"loop": true,
+"name": &"unprocessed_normal",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jp6n2"]
+radius = 75.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3ycr"]
+radius = 50.0
+
+[node name="Tomato" type="CharacterBody2D" groups=["Food"]]
+z_index = 2
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_elajj")
+food_type = "tomato"
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+scale = Vector2(4.015625, 4.40625)
+sprite_frames = SubResource("SpriteFrames_bql73")
+animation = &"unprocessed_normal"
+autoplay = "unprocessed_normal"
+
+[node name="MouseDetectorArea" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="MouseDetectorArea"]
+z_index = 2
+scale = Vector2(0.67, 0.67)
+shape = SubResource("CircleShape2D_jp6n2")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+shape = SubResource("CircleShape2D_o3ycr")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="AnimationTimer1" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AnimationTimer2" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="mouse_entered" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timers/AnimationTimer1" to="." method="_on_animation_timer_1_timeout"]
+[connection signal="timeout" from="Timers/AnimationTimer2" to="." method="_on_animation_timer_2_timeout"]

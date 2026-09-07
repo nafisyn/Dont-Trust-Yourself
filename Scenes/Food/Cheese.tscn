@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://egkwmjiw6mdb"]
+
+[ext_resource type="Script" uid="uid://ckinhialrnbke" path="res://Scripts/food_object.gd" id="1_1vfvm"]
+[ext_resource type="Texture2D" uid="uid://0vaolcttoa4h" path="res://Assets/TYFood.png" id="2_bt38w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hixrw"]
+atlas = ExtResource("2_bt38w")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bql73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hixrw")
+}],
+"loop": true,
+"name": &"processed_normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vfvm"]
+size = Vector2(100, 50)
+
+[node name="Cheese" type="CharacterBody2D" groups=["Food"]]
+z_index = 2
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_1vfvm")
+food_type = "cheese"
+processed = true
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -12.5)
+scale = Vector2(4.015625, 4.40625)
+sprite_frames = SubResource("SpriteFrames_bql73")
+animation = &"processed_normal"
+autoplay = "processed_normal"
+
+[node name="MouseDetectorArea" type="Area2D" parent="."]
+z_index = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="MouseDetectorArea"]
+z_index = 2
+scale = Vector2(0.67, 0.67)
+shape = SubResource("RectangleShape2D_1vfvm")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 2
+shape = SubResource("RectangleShape2D_1vfvm")
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="AnimationTimer1" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AnimationTimer2" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="mouse_entered" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timers/AnimationTimer1" to="." method="_on_animation_timer_1_timeout"]
+[connection signal="timeout" from="Timers/AnimationTimer2" to="." method="_on_animation_timer_2_timeout"]

@@ -1,0 +1,198 @@
+[gd_scene load_steps=22 format=3 uid="uid://bgbcvplcxt4qa"]
+
+[ext_resource type="Texture2D" uid="uid://b7t2exynq81hu" path="res://Assets/TYBackgrounds.png" id="1_utesk"]
+[ext_resource type="Texture2D" uid="uid://h4m0oxbmdf5j" path="res://Assets/TYItems.png" id="2_lb8ox"]
+[ext_resource type="Script" uid="uid://qceckles7uvt" path="res://Scripts/meat_box.gd" id="3_pftw7"]
+[ext_resource type="Script" uid="uid://ihdj25ir5r2r" path="res://Scripts/cheese_box.gd" id="4_pftw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pftw7"]
+atlas = ExtResource("1_utesk")
+region = Rect2(72, 240, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1u6k"]
+atlas = ExtResource("1_utesk")
+region = Rect2(72, 192, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lymq"]
+atlas = ExtResource("1_utesk")
+region = Rect2(72, 144, 72, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lb8ox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pftw7")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1u6k")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lymq")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utesk"]
+size = Vector2(72, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lymq"]
+size = Vector2(23, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb8ox"]
+size = Vector2(28.5, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ophi"]
+atlas = ExtResource("2_lb8ox")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux263"]
+atlas = ExtResource("2_lb8ox")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy2wl"]
+atlas = ExtResource("2_lb8ox")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1u6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ophi")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux263")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy2wl")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pftw7"]
+size = Vector2(33.333332, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ver70"]
+atlas = ExtResource("2_lb8ox")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3aah"]
+atlas = ExtResource("2_lb8ox")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb8ox"]
+atlas = ExtResource("2_lb8ox")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pftw7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ver70")
+}],
+"loop": true,
+"name": &"distorted_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3aah")
+}],
+"loop": true,
+"name": &"distorted_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb8ox")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy2wl"]
+size = Vector2(33.333332, 20)
+
+[node name="FreezerRoom" type="Node2D" groups=["Room"]]
+
+[node name="Room" type="AnimatedSprite2D" parent="." groups=["Distortable"]]
+sprite_frames = SubResource("SpriteFrames_lb8ox")
+animation = &"distorted_0"
+autoplay = "normal"
+
+[node name="Collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(0, 53)
+shape = SubResource("RectangleShape2D_utesk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision"]
+position = Vector2(15.5, 15.5)
+shape = SubResource("RectangleShape2D_7lymq")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="."]
+position = Vector2(-51, -2)
+shape = SubResource("RectangleShape2D_lb8ox")
+
+[node name="RightBorder" type="CollisionShape2D" parent="."]
+position = Vector2(50.75, -2)
+shape = SubResource("RectangleShape2D_lb8ox")
+
+[node name="MeatBox" type="AnimatedSprite2D" parent="." groups=["Distortable"]]
+z_index = 2
+position = Vector2(14, 0)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_x1u6k")
+animation = &"distorted_10"
+autoplay = "normal"
+script = ExtResource("3_pftw7")
+
+[node name="Area2D" type="Area2D" parent="MeatBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeatBox/Area2D"]
+position = Vector2(3.8146973e-06, 6.6666665)
+shape = SubResource("RectangleShape2D_pftw7")
+
+[node name="CheeseBox" type="AnimatedSprite2D" parent="." groups=["Distortable"]]
+z_index = 2
+position = Vector2(-7, 11.000001)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_pftw7")
+animation = &"distorted_10"
+autoplay = "normal"
+script = ExtResource("4_pftw7")
+
+[node name="Area2D" type="Area2D" parent="CheeseBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheeseBox/Area2D"]
+position = Vector2(0, 6.666666)
+shape = SubResource("RectangleShape2D_hy2wl")
+
+[connection signal="mouse_entered" from="MeatBox/Area2D" to="MeatBox" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MeatBox/Area2D" to="MeatBox" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="CheeseBox/Area2D" to="CheeseBox" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CheeseBox/Area2D" to="CheeseBox" method="_on_area_2d_mouse_exited"]

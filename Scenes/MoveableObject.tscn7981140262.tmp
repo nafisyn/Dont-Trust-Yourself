@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct3pj3cafyyfk"]
+
+[ext_resource type="Script" uid="uid://ckinhialrnbke" path="res://Scripts/moveable_object.gd" id="1_o5lon"]
+[ext_resource type="Texture2D" uid="uid://fnrnol8uce71" path="res://icon.svg" id="2_d8hma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw61j"]
+size = Vector2(128.10318, 128)
+
+[node name="MoveableObject" type="CharacterBody2D"]
+z_index = 2
+scale = Vector2(0.0792353, 0.060700975)
+collision_layer = 2
+script = ExtResource("1_o5lon")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_d8hma")
+
+[node name="MouseDetectorArea" type="Area2D" parent="."]
+z_index = 2
+
+[node name="MouseDetectorCollision" type="CollisionShape2D" parent="MouseDetectorArea"]
+z_index = 2
+position = Vector2(-0.9484099, -0.9999998)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_bw61j")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_bw61j")
+
+[connection signal="mouse_entered" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectorArea" to="." method="_on_area_2d_mouse_exited"]

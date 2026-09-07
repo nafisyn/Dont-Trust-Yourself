@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw827bb7bk66p"]
+
+[ext_resource type="Texture2D" uid="uid://ddra0xgog5phb" path="res://Assets/TYGUI.png" id="1_r4il0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyjev"]
+atlas = ExtResource("1_r4il0")
+region = Rect2(64, 0, 32, 32)
+
+[node name="DownButton" type="TextureButton"]
+z_index = 5
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 29.0
+offset_bottom = 28.0
+scale = Vector2(0.2, 0.2)
+texture_normal = SubResource("AtlasTexture_kyjev")

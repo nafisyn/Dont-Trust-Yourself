@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://brc4f7gdl3nq6"]
+
+[ext_resource type="Script" uid="uid://dq70o0olfoeqq" path="res://Scripts/world.gd" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://baqhphp3n7e48" path="res://Scenes/WindowRoom.tscn" id="2_idj7w"]
+[ext_resource type="Script" uid="uid://ccwy24f135jxf" path="res://Scripts/room_switching.gd" id="2_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://ct3pj3cafyyfk" path="res://Scenes/MoveableObject.tscn" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://cw827bb7bk66p" path="res://Scenes/GUI/DownButton.tscn" id="4_jw32o"]
+[ext_resource type="PackedScene" uid="uid://bbmvn2jav47bb" path="res://Scenes/GUI/LeftButton.tscn" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://2edymtuktfrf" path="res://Scenes/GUI/RightButton.tscn" id="5_v1gob"]
+[ext_resource type="PackedScene" uid="uid://cj6qa8dilpolo" path="res://Scenes/GUI/UpButton.tscn" id="8_50glp"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_r150o")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(16, 14)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("2_pbw6q")
+
+[node name="MoveableObject" parent="." instance=ExtResource("3_kln2b")]
+position = Vector2(-21, -4.0000076)
+
+[node name="MoveableObject2" parent="." instance=ExtResource("3_kln2b")]
+position = Vector2(6.999998, -5)
+
+[node name="MovementButtons" type="Node2D" parent="."]
+z_index = 5
+
+[node name="DownButton" parent="MovementButtons" instance=ExtResource("4_jw32o")]
+z_index = 5
+offset_left = -1.9999998
+offset_top = 18.0
+offset_right = 20.0
+offset_bottom = 49.0
+
+[node name="LeftButton" parent="MovementButtons" instance=ExtResource("4_rgh2o")]
+offset_left = -34.0
+offset_top = -7.999996
+offset_right = -12.0
+offset_bottom = 23.000004
+
+[node name="LeftButton2" parent="MovementButtons" instance=ExtResource("4_rgh2o")]
+offset_left = 124.0
+offset_top = -4.0
+offset_right = 146.0
+offset_bottom = 27.0
+
+[node name="RightButton" parent="MovementButtons" instance=ExtResource("5_v1gob")]
+offset_left = 32.0
+offset_top = -8.0
+offset_right = 54.0
+offset_bottom = 23.0
+
+[node name="RightButton2" parent="MovementButtons" instance=ExtResource("5_v1gob")]
+offset_left = -98.00001
+offset_top = -3.0
+offset_right = -76.00001
+offset_bottom = 28.0
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="WindowRoom" parent="Rooms" instance=ExtResource("2_idj7w")]
+
+[node name="Left" type="Label" parent="."]
+offset_left = -125.0
+offset_top = -12.0
+offset_right = -85.0
+offset_bottom = 11.0
+text = "left"
+
+[node name="Right" type="Label" parent="."]
+offset_left = 125.0
+offset_top = -12.0
+offset_right = 165.0
+offset_bottom = 11.0
+text = "right"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_left = -160.0
+offset_top = -53.0
+offset_right = 162.0
+offset_bottom = 171.0
+mouse_filter = 2
+color = Color(0.42352942, 0.42352942, 0.42352942, 1)
+
+[node name="UpButton" parent="." instance=ExtResource("8_50glp")]
+offset_left = 2.0
+offset_top = 87.0
+offset_right = 24.0
+offset_bottom = 118.0
+
+[connection signal="object_dropped" from="MoveableObject" to="." method="_on_moveable_object_object_dropped"]
+[connection signal="object_held" from="MoveableObject" to="." method="_on_moveable_object_object_held"]
+[connection signal="object_dropped" from="MoveableObject2" to="." method="_on_moveable_object_object_dropped"]
+[connection signal="object_held" from="MoveableObject2" to="." method="_on_moveable_object_object_held"]
+[connection signal="pressed" from="MovementButtons/DownButton" to="Camera" method="_on_down_button_pressed"]
+[connection signal="pressed" from="MovementButtons/LeftButton" to="Camera" method="_on_left_button_pressed"]
+[connection signal="pressed" from="MovementButtons/LeftButton2" to="Camera" method="_on_left_button_pressed"]
+[connection signal="pressed" from="MovementButtons/RightButton" to="Camera" method="_on_right_button_pressed"]
+[connection signal="pressed" from="MovementButtons/RightButton2" to="Camera" method="_on_right_button_pressed"]
