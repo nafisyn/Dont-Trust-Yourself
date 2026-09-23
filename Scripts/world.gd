@@ -14,6 +14,7 @@ extends Node2D
 @onready var next_positions_original_position = next_position.global_position
 @onready var next_positions_next_position = next_position.global_position - Vector2(50, 0)
 @onready var food_bag = $Bag
+@onready var coin_sfx := $Camera/CoinSFX
 @onready var money_label = $GUI/Control/MoneyLabel
 @onready var sanity_bar := $GUI/Control/SanityBar
 @onready var flash_timer := $FlashTimer
@@ -63,6 +64,8 @@ func _process(delta: float) -> void:
 			if ingredient in customer.order:
 				
 				money += randi_range(2, 4)
+				
+				coin_sfx.play()
 	
 		
 		next_position.global_position = next_positions_next_position
@@ -74,6 +77,7 @@ func _process(delta: float) -> void:
 		customer.queue_free()
 		next_position.global_position = next_positions_original_position
 		food_bag.ingredients = []
+
 		order_completed = false
 		
 		return
@@ -99,7 +103,7 @@ func _process(delta: float) -> void:
 		else:
 			
 			for distortable in distortables:
-				 
+				
 				distortable.play("distorted_10")
 	
 	if sanity_bar.value == 10 or sanity_bar.value == 1:

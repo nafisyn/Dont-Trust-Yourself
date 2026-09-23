@@ -436,6 +436,7 @@ stream = ExtResource("6_rw2q5")
 
 [node name="Ding" type="AudioStreamPlayer2D" parent="Microwave"]
 stream = ExtResource("7_4jrrn")
+volume_db = -8.0
 
 [node name="Stove" type="AnimatedSprite2D" parent="." groups=["Distortable"]]
 position = Vector2(-1, 0)
@@ -473,6 +474,7 @@ stream = ExtResource("6_rw2q5")
 
 [node name="Ding" type="AudioStreamPlayer2D" parent="Stove"]
 stream = ExtResource("7_4jrrn")
+volume_db = -8.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

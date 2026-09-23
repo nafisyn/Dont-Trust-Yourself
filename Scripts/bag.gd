@@ -1,6 +1,8 @@
 extends Sprite2D
 
 
+@onready var bag_sfx = $BagSFX
+
 var ingredients := []
 
 
@@ -12,4 +14,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			
 			ingredients.append(body.food_type)
 			body.queue_free()
+			bag_sfx.play()
 			print(ingredients)

@@ -166,6 +166,7 @@ stream = ExtResource("5_p3k5k")
 
 [node name="Ding" type="AudioStreamPlayer2D" parent="BreadCutter"]
 stream = ExtResource("6_qgof5")
+volume_db = -8.0
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 

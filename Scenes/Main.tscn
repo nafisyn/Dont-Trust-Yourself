@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://brc4f7gdl3nq6"]
+[gd_scene load_steps=25 format=3 uid="uid://brc4f7gdl3nq6"]
 
 [ext_resource type="Script" uid="uid://dq70o0olfoeqq" path="res://Scripts/world.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://baqhphp3n7e48" path="res://Scenes/Rooms/WindowRoom.tscn" id="2_idj7w"]
 [ext_resource type="Script" uid="uid://ccwy24f135jxf" path="res://Scripts/room_switching.gd" id="2_pbw6q"]
+[ext_resource type="AudioStream" uid="uid://byl0r61bcwtia" path="res://Assets/Coins Clink_Collect SFX - 25 Sounds (Copyright Free) - YouTube - Google Chrome 2026-08-29 19-45-40.mp3" id="3_0sclb"]
 [ext_resource type="PackedScene" uid="uid://csfywgulhorkk" path="res://Scenes/GUI/SanityBar.tscn" id="3_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://cw827bb7bk66p" path="res://Scenes/GUI/DownButton.tscn" id="4_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bbmvn2jav47bb" path="res://Scenes/GUI/LeftButton.tscn" id="4_rgh2o"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://h4m0oxbmdf5j" path="res://Assets/TYItems.png" id="16_2w5on"]
 [ext_resource type="PackedScene" uid="uid://bgbcvplcxt4qa" path="res://Scenes/Rooms/FreezerRoom.tscn" id="17_2w5on"]
 [ext_resource type="Script" uid="uid://o0k5ffwpxulq" path="res://Scripts/bag.gd" id="17_346fj"]
+[ext_resource type="AudioStream" uid="uid://cf8n04rcp3tt8" path="res://Assets/0830.mp3" id="18_346fj"]
 [ext_resource type="PackedScene" uid="uid://bklc40wo3id2g" path="res://Scenes/Customer.tscn" id="19_0sclb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1m7h"]
@@ -44,6 +46,10 @@ zoom = Vector2(16, 14)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("2_pbw6q")
+
+[node name="CoinSFX" type="AudioStreamPlayer2D" parent="Camera"]
+stream = ExtResource("3_0sclb")
+volume_db = 5.0
 
 [node name="MovementButtons" type="Node2D" parent="."]
 z_index = 5
@@ -193,6 +199,11 @@ script = ExtResource("17_346fj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bag/Area2D"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_sxkr1")
+
+[node name="BagSFX" type="AudioStreamPlayer2D" parent="Bag"]
+stream = ExtResource("18_346fj")
+volume_db = 10.0
+max_distance = 150.0
 
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 0.1
